@@ -36,6 +36,15 @@ class App extends Component {
         }
     };
 
+    deleteItem = key => {
+      const filterItems = this.state.items.filter(item => {
+          return item.key !== key
+      });
+        this.setState({
+            items: filterItems
+        })
+    };
+
     render() {
         return (
             <div className="App">
@@ -47,6 +56,7 @@ class App extends Component {
                 />
                 <TodoItems
                     entries={this.state.items}
+                    deleteItem={this.deleteItem}
                 />
             </div>
         );
